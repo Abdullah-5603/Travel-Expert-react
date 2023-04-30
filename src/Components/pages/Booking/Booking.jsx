@@ -1,29 +1,17 @@
 import { ArrowRightIcon, CalendarIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
-// import { DateRangePicker } from 'react-date-range';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+
 
 const Booking = () => {
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+
     const data = useLoaderData();
     console.log(data)
-
-
-    // const [dateRange, setDateRange] = useState([
-    //     {
-    //       startDate: new Date(),
-    //       endDate: null,
-    //       key: 'selection',
-    //     },
-    //   ]);
-    
-    //   const handleDateRangeSelection = (ranges) => {
-    //     setDateRange([ranges.selection]);
-    //   };
-
-
-
 
     return (
         <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-6 relative'>
@@ -33,54 +21,26 @@ const Booking = () => {
             </div>
             <div className='bg-white rounded-xl w-7/12 h-4/6 p-10 flex flex-col md:mx-32 md:my-16'>
                 <label htmlFor="" className='font-bold text-gray-400'>Origin</label>
-                <input className='bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400' type="text" placeholder='Origin' />
+                <input className='bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400 font-semibold' type="text" placeholder='Origin' />
                 <label htmlFor="" className='font-bold text-gray-400'>Destination</label>
-                <input className='bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400' type="text" placeholder='Destination' />
+                <input className='bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400 font-semibold' type="text" placeholder='Destination' />
                 <div className='flex flex-row justify-between w-full'>
-                    {/* <div className='flex flex-col mr-3'>
+                    <div className='flex flex-col mr-3'>
                         <label htmlFor="" className='font-bold text-gray-400'>From</label>
                         <div className='flex items-center relative'>
-                            <input type="text" class="form-control w-full bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400" placeholder="From" />
+                            <DatePicker className="calendar-container w-full bg-gray-300 rounded-md my-3 p-3 font-semibold placeholderText:text-gray-400" selected={startDate} onChange={(date) => setStartDate(date)} placeholderText='Start Date'/>
                             <span className='absolute right-2'><CalendarIcon className='h-6 w-6' /></span>
                         </div>
                     </div>
                     <div className='flex flex-col'>
                         <label htmlFor="" className='font-bold text-gray-400'>To</label>
                         <div className='flex items-center relative'>
-                            <input type="text" class="form-control w-full bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400" placeholder="To" />
+                            <DatePicker className="calendar-container w-full bg-gray-300 rounded-md my-3 p-3 font-semibold placeholderText:text-gray-400" selected={endDate} onChange={(date) => setEndDate(date)} placeholderText='End Date'/>
                             <span className='absolute right-2'><CalendarIcon className='h-6 w-6' /></span>
                         </div>
-                    </div> */}
-                          {/* <div className="flex flex-col mr-3">
-        <label htmlFor="" className="font-bold text-gray-400">
-          From
-        </label>
-        <div className="flex items-center relative">
-          <DateRangePicker
-            ranges={dateRange}
-            onChange={handleDateRangeSelection}
-          />
-          <span className="absolute right-2">
-            <CalendarIcon className="h-6 w-6" />
-          </span>
-        </div>
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="" className="font-bold text-gray-400">
-          To
-        </label>
-        <div className="flex items-center relative">
-          <DateRangePicker
-            ranges={dateRange}
-            onChange={handleDateRangeSelection}
-          />
-          <span className="absolute right-2">
-            <CalendarIcon className="h-6 w-6" />
-          </span>
-        </div>
-      </div> */}
+                    </div>
                 </div>
-                <button className='bg-btn-color flex items-center justify-center py-3 my-3 rounded-md'>Start Booking <ArrowRightIcon className='h-5 w-5' /></button>
+                <button className='bg-btn-color flex items-center justify-center py-3 my-3 rounded-md font-semibold'>Start Booking <ArrowRightIcon className='h-5 w-5 mx-2 mt-1 ' /></button>
             </div>
         </div>
     );
