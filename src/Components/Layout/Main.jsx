@@ -8,7 +8,7 @@ const Main = () => {
         <div className="relative h-screen">
             <div className="absolute inset-0 bg-cover bg-center bg-background-image" >
             </div>
-            <div className="absolute inset-0 bg-black opacity-50">
+            <div className="absolute inset-0 bg-black opacity-60">
             </div>
             <Header />
             <Outlet/>

@@ -1,6 +1,6 @@
 import { ArrowRightIcon, CalendarIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -11,7 +11,6 @@ const Booking = () => {
     const [endDate, setEndDate] = useState('');
 
     const data = useLoaderData();
-    console.log(data)
 
     return (
         <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-6 relative'>
@@ -40,7 +39,7 @@ const Booking = () => {
                         </div>
                     </div>
                 </div>
-                <button className='bg-btn-color flex items-center justify-center py-3 my-3 rounded-md font-semibold'>Start Booking <ArrowRightIcon className='h-5 w-5 mx-2 mt-1 ' /></button>
+                <Link to={`/hotels/${data.id}`}><button className='bg-btn-color flex items-center justify-center py-3 my-3 rounded-md font-semibold w-full'>Start Booking <ArrowRightIcon className='h-5 w-5 mx-2 mt-1 ' /></button></Link>
             </div>
         </div>
     );
