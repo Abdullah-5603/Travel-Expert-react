@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../pages/Shared/Header/Header';
-import logo from '../../assets/Images/logo.png'
-import { Link } from 'react-router-dom';
+import Destination from '../pages/Destination/Destination';
+import { Outlet } from 'react-router-dom';
 
 const Main = () => {
     return (
@@ -11,6 +11,7 @@ const Main = () => {
             <div className="absolute inset-0 bg-black opacity-50">
             </div>
             <Header />
+            <Outlet/>
         </div>
 
 

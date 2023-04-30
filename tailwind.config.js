@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'btn-color': '#F9A51A',
+      },
       backgroundImage: {
         'background-image': "url('./src/assets/Images/Rectangle 1.png')",
       },

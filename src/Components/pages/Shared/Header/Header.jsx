@@ -14,6 +14,7 @@ const Header = () => {
                     <Link to="">Destination</Link>
                     <Link to="">Blog</Link>
                     <Link to="">Contact</Link>
+                    <button className='py-2 px-5 text-black rounded bg-btn-color' >Login</button>
                 </nav>
             </div>
         </header>
