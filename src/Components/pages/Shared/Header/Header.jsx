@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <header className="relative w-10/12 py-5 bg-opacity-100 mx-auto">
             <div className="flex justify-between items-center">
-                <img className="w-40 h-16" src={logo} alt="Logo" />
+                <Link to='/'><img className="w-40 h-16" src={logo} alt="Logo" /></Link>
                 <SearchBar></SearchBar>
                 <nav className="flex items-center space-x-8 text-white font-bold">
                     <Link to="">News</Link>

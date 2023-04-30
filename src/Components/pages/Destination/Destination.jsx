@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DestinationCard from '../DestinationCard/DestinationCard';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Destination = () => {
     const destination = useLoaderData();
@@ -21,24 +21,30 @@ const Destination = () => {
 
     const handleDescription = id =>{
         const cardDescription = destination.find((card) => card.id == id);
-        setDescription(cardDescription.description)
+        setDescription(cardDescription)
     }
 
     const visibleCards = destination.slice(activeIndex, activeIndex + 1);
-    const cardId = visibleCards.map(vc => vc.id);
 
+    // console.log(description)
     return (
-        <div className="grid grid-cols-3 gap-4 my-auto h-auto">
-            <div className="col-span-2">
-                <p className='text-white'>{description}</p>
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 my-auto h-auto">
+            <div className="col-span-2 relative sm:m-10 md:m-32">
+                {
+                   Object.keys(description).length !== 0  ? <><p className='text-white text-7xl pb-10'>{description.name}</p>
+                    <p className='text-white text-xl'>{description.description.slice(0, 400)}....</p>
+                    <Link to={`/destination/${description.id}`}><button className='flex items-center bg-btn-color py-2 px-5 rounded-md mt-5 font-bold'>Booking <ArrowRightIcon className='h-5 w-5 ml-2'/></button></Link> </>: <p className='text-white text-xl font-bold'>Please select a destination to visit</p>
+                }
             </div>
-            <div className="col-span-1 w-6/12 relative">
+            <div className="col-span-1 w-6/12 relative mt-32">
                 <div onClick={prevCard} className='bg-white rounded-full flex items-center justify-center h-10 w-10 absolute top-1/2 -left-16 transform -translate-y-1/2  text-black z-10'>
                     <ArrowLeftIcon className='h-5 w-5 ' />
                 </div>
-                <div onClick={() => handleDescription(cardId)} className='h-auto'>
+                <div className='h-auto'>
                     {visibleCards.map(ds => (
-                        <DestinationCard ds={ds} key={ds.id}></DestinationCard>
+                        <DestinationCard 
+                        handleDescription={handleDescription}
+                        ds={ds} key={ds.id}></DestinationCard>
                     ))}
                 </div>
                 <div onClick={nextCard} className='bg-white rounded-full flex items-center justify-center h-10 w-10 absolute top-1/2 -right-16 transform -translate-y-1/2  text-black z-10'>
