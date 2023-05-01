@@ -1,5 +1,4 @@
 import React from 'react';
-import CommonHeader from '../pages/Shared/CommonHeader/CommonHeader';
 import { Outlet } from 'react-router-dom';
 import Header from '../pages/Shared/Header/Header';
 

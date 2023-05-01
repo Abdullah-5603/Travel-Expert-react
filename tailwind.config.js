@@ -1,4 +1,3 @@
-// tailwind.config.js
 module.exports = {
   content: [
     "./index.html",
@@ -14,11 +13,15 @@ module.exports = {
       },
     }
   },
+  variants: {
+    extend: {
+      translate: ['group-hover'],
+      fontSize: ['hover'],
+      textColor: ['group-hover'],
+    }
+  },
   daisyui: {
-    themes: ['light'],
+    themes : ['light']
   },
   plugins: [require('daisyui')],
-};
-
-
-
+}
