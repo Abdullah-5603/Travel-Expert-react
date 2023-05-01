@@ -33,7 +33,7 @@ const Destination = () => {
                 {
                    Object.keys(description).length !== 0  ? <><p className='text-white text-7xl pb-10'>{description.name}</p>
                     <p className='text-white text-xl'>{description.description.slice(0, 400)}....</p>
-                    <Link to={`/destination/${description.id}`}><button className='flex items-center bg-btn-color py-2 px-5 rounded-md mt-5 font-bold'>Booking <ArrowRightIcon className='h-5 w-5 ml-2'/></button></Link> </>: <p className='text-white text-xl font-bold'>Please select a destination to visit</p>
+                    <Link to={`/destination/${description.id}`}><button className='flex items-center bg-btn-color py-2 px-5 rounded-md mt-5 font-bold'>Booking <ArrowRightIcon className='h-5 w-5 ml-2'/></button></Link> </>: <p className='text-white text-4xl font-bold'>Please select a destination to visit</p>
                 }
             </div>
             <div className="col-span-1 w-6/12 relative mt-32">

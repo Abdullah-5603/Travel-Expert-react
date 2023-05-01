@@ -1,11 +1,12 @@
 import React from 'react';
 import CommonHeader from '../pages/Shared/CommonHeader/CommonHeader';
 import { Outlet } from 'react-router-dom';
+import Header from '../pages/Shared/Header/Header';
 
 const HotelLayout = () => {
     return (
         <div className='flex flex-col items-center'>
-            <CommonHeader/>
+            <Header/>
             <hr className=' w-10/12'/>
             <Outlet/>
         </div>
