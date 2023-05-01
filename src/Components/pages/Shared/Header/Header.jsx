@@ -6,7 +6,10 @@ import SearchBar from '../SearchBar/SearchBar';
 
 const Header = () => {
     const location = useLocation();
-    
+    const activeStyle = {
+        color : '#F9A51A'
+    }
+
     return (
         <header className="relative w-10/12 py-5 bg-opacity-100 mx-auto">
             <div className="flex justify-between items-center">
@@ -20,10 +23,10 @@ const Header = () => {
 
                 }
                 <nav className={`flex items-center space-x-8 ${location.pathname === '/' || location.pathname.startsWith('/destination/') ? 'text-white' : 'text-black'} font-bold`}>
-                    <Link to="/news">News</Link>
-                    <Link to="/">Destination</Link>
-                    <Link to="/blog">Blog</Link>
-                    <Link to="/contact">Contact</Link>
+                    <Link style={location.pathname === '/' ? activeStyle : null} className='duration-200  hover:text-btn-color' to="/">Home</Link>
+                    <Link style={location.pathname === '/destination' ? activeStyle : null} className='duration-200  hover:text-btn-color' to="/destination">Destination</Link>
+                    <Link style={location.pathname === '/blog' ? activeStyle : null} className='duration-200  hover:text-btn-color' to="/blog">Blog</Link>
+                    <Link style={location.pathname === '/contact' ? activeStyle : null} className='duration-200  hover:text-btn-color' to="/contact">Contact</Link>
                     <Link to='/login'><button className='py-2 px-5 text-black rounded bg-btn-color' >Login</button></Link>
                 </nav>
             </div>
