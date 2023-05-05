@@ -18,7 +18,7 @@ const Booking = () => {
                 <p className='text-white text-7xl pb-10'>{data.name}</p>
                 <p className='text-white text-xl'>{data.description}</p>
             </div>
-            <div className='bg-white rounded-xl w-7/12 h-4/6 p-10 flex flex-col md:mx-32 md:my-16'>
+            <div className='bg-white rounded-xl w-7/12 p-10 flex flex-col md:mx-32 md:my-16'>
                 <label htmlFor="" className='font-bold text-gray-400'>Origin</label>
                 <input className='bg-gray-300 p-3 my-3 rounded-md placeholder:text-gray-400 font-semibold' type="text" placeholder='Origin' />
                 <label htmlFor="" className='font-bold text-gray-400'>Destination</label>

@@ -3,8 +3,10 @@ import fblogo from '../../../../assets/Images/icons/fb.png';
 import googleLogo from '../../../../assets/Images/icons/google.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import Loader from '../../Shared/Loader/Loader';
+
 const Login = () => {
-    const {signInUser} = useContext(AuthContext);
+    const {signInUser, loading, setLoading} = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const handleSubmit = event =>{
@@ -27,6 +29,7 @@ const Login = () => {
             signInUser(email, password)
             .then(result =>{
                 const user = result.user;
+                setLoading(false)
             })
             .catch(error =>{
                 const errorMessage = error.message;
@@ -38,6 +41,10 @@ const Login = () => {
     }
     return (
 
+       <>
+       {
+        loading && <Loader/>
+       }
         <div className='mx-auto my-5 p-10 w-5/12 '>
             <form onSubmit={handleSubmit} className='p-10 bg-white rounded-md border-2'>
             <p className='text-xl font-bold text-black mb-7'>Login</p>
@@ -69,6 +76,7 @@ const Login = () => {
                 <p className='font-semibold mx-auto'>Continue with Facebook</p>
             </div>
         </div>
+       </>
     );
 };
 

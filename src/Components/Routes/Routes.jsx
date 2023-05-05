@@ -7,6 +7,7 @@ import Hotels from "../pages/Hotels/Hotels";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
 import LoginLayout from "../Layout/LoginLayout";
+import HotelDetails from "../pages/HotelDetails/HotelDetails";
 
 
 const route = createBrowserRouter([
@@ -17,12 +18,12 @@ const route = createBrowserRouter([
             {
                 path: '/',
                 element: <Destination />,
-                loader: () => fetch('http://localhost:3000/')
+                loader: () => fetch('https://travel-guru-data-server-abdullah-5603.vercel.app/destination')
             },
             {
                 path: 'destination/:id',
                 element: <Booking />,
-                loader: ({ params }) => fetch(`http://localhost:3000/destination/${params.id}`)
+                loader: ({ params }) => fetch(`https://travel-guru-data-server-abdullah-5603.vercel.app/destination/${params.id}`)
             },
         ]
     },
@@ -33,7 +34,12 @@ const route = createBrowserRouter([
             {
                 path: '/hotels/:id',
                 element: <Hotels />,
-                loader: ({ params }) => fetch(`http://localhost:3000/hotels/${params.id}`)
+                loader: ({ params }) => fetch(`https://travel-guru-data-server-abdullah-5603.vercel.app/destination/${params.id}`)
+            },
+            {
+                path : '/hotels/hotelDetails/:hotelId',
+                element : <HotelDetails/>,
+                loader : ({params}) => fetch(`https://travel-guru-data-server-abdullah-5603.vercel.app/hotels/${params.hotelId}`)
             }
         ]
     },

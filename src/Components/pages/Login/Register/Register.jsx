@@ -3,9 +3,10 @@ import fblogo from '../../../../assets/Images/icons/fb.png';
 import googleLogo from '../../../../assets/Images/icons/google.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import Loader from '../../Shared/Loader/Loader';
 
 const Register = () => {
-    const { createUser, setUser } = useContext(AuthContext);
+    const { createUser, setUser, loading, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('')
 
     const handleSubmit = event => {
@@ -35,6 +36,7 @@ const Register = () => {
                 const user = userCredential.user;
                 user.displayName = displayName;
                 setUser(user)
+                setLoading(false)
               })
               .catch((error) => {
                 const errorMessage = error.message;
@@ -46,6 +48,10 @@ const Register = () => {
         }
     }
     return (
+       <>
+       {
+        loading && <Loader/>
+       }
         <div className='my-5 mx-auto p-10 w-5/12 '>
             <form onSubmit={handleSubmit} className='p-10 bg-white rounded-md border-2'>
                 <p className='text-xl font-bold text-black mb-7'>Register</p>
@@ -82,6 +88,7 @@ const Register = () => {
                 <p className='font-semibold mx-auto'>Continue with Facebook</p>
             </div>
         </div>
+       </>
     );
 };
 

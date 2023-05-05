@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DestinationCard from '../DestinationCard/DestinationCard';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid';
 import { Link, useLoaderData } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Destination = () => {
     const destination = useLoaderData();
     const [activeIndex, setActiveIndex] = useState(0);
-    const [description, setDescription] = useState('')
+    const [description, setDescription] = useState('');
 
     const prevCard = () => {
         setActiveIndex(prevIndex => {
