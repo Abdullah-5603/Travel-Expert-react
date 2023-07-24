@@ -7,10 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Main = () => {
     return (
         <div className="relative h-screen">
-            <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage: "url('https://raw.githubusercontent.com/Abdullah-5603/image/main/Rectangle%201.jpg')", height: '100vh', width: '100%'}}>
-            </div>
-            <div className="absolute inset-0 bg-black opacity-50">
-            </div>
+            <div className="absolute bg-cover bg-center" style={{backgroundImage: "url('https://i.ibb.co/bzV4hmD/Rectangle-1.png')", height: '100vh', width: '100%'}}></div>
+            <div className="absolute inset-0 bg-black opacity-40"></div>
             <Header />
             <Outlet/>
             <ToastContainer/>

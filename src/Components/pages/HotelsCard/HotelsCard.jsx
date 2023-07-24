@@ -12,7 +12,7 @@ const HotelsCard = ({ dt }) => {
     }
     return (
         <div className="card w-96 glass">
-            <figure><img className='h-64 w-full' src={image} alt="car!" /></figure>
+            <figure><img className='h-64 w-full' src={image} alt={hotelName} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{hotelName}</h2>
                 <p>{hotelDescription}</p>

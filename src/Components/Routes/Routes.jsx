@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
 import LoginLayout from "../Layout/LoginLayout";
 import HotelDetails from "../pages/HotelDetails/HotelDetails";
+import ErrorElement from "../ErrorElement/ErrorElement";
 
 
 const route = createBrowserRouter([
@@ -37,9 +38,9 @@ const route = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://travel-guru-data-server-abdullah-5603.vercel.app/destination/${params.id}`)
             },
             {
-                path : '/hotels/hotelDetails/:hotelId',
-                element : <HotelDetails/>,
-                loader : ({params}) => fetch(`https://travel-guru-data-server-abdullah-5603.vercel.app/hotels/${params.hotelId}`)
+                path: '/hotels/hotelDetails/:hotelId',
+                element: <HotelDetails />,
+                loader: ({ params }) => fetch(`https://travel-guru-data-server-abdullah-5603.vercel.app/hotels/${params.hotelId}`)
             }
         ]
     },
@@ -56,6 +57,10 @@ const route = createBrowserRouter([
                 element: <Register />
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorElement />
     }
 
 ]);

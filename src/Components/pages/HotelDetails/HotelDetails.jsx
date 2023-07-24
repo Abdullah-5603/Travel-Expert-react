@@ -14,7 +14,7 @@ const HotelDetails = () => {
                 <p className='text-3xl font-bold'>{hotelName}</p>
                 <p className='font-semibold mt-2'>Room Facilities: <span className='font-normal'>{roomFacilities.join(', ')}</span></p>
                 <p className='font-semibold mt-2'>Description: <span className='font-normal'>{hotelDescription}</span></p>
-                <p className='font-semibold mt-2 flex items-center'>Ratings: <span className='font-normal ml-2'>{hotelRatings}</span><StarIcon className='h-5 w-5 text-btn-color'/></p>
+                <p className='font-semibold mt-2 flex items-center'>Ratings: <span className='font-normal ml-2'>{hotelRatings}</span><StarIcon className='h-5 w-5 mx-2 text-btn-color'/></p>
                 <div className="overflow-x-auto mt-4">
                     <table className="table w-full">
                         <thead>

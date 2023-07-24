@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
-import fblogo from '../../../../assets/Images/icons/fb.png';
+import fbLogo from '../../../../assets/Images/icons/fb.png';
 import googleLogo from '../../../../assets/Images/icons/google.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import Loader from '../../Shared/Loader/Loader';
 
 const Login = () => {
-    const {signInUser, loading, setLoading} = useContext(AuthContext);
+    const {signInUser, loading, setLoading, googleSignInUser, facebookSignInUser, facebookAuthProvider} = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [remember, setRemember] = useState(true)
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -39,6 +40,28 @@ const Login = () => {
             })
         }
     }
+    const googleSignIn = () =>{
+        googleSignInUser()
+        .then(result =>{
+            const user = result.user
+        })
+        .catch(error =>{
+            setError(error.message)
+        })
+    }
+    const facebookSignIn = () =>{
+        facebookSignInUser()
+        .then(result =>{
+            const user = result.user
+            const credential = facebookAuthProvider(result)
+            const accessToken = credential.accessToken;
+        
+        })
+        .catch(error =>{
+            setError(error.message)
+        })
+    }
+
     return (
 
        <>
@@ -58,20 +81,20 @@ const Login = () => {
             </div>
             <div className='flex flex-row justify-between items-center my-5'>
                 <div className='flex items-center'>
-                    <input type="checkbox" className="h-5 w-5 text-black border border-black rounded-md" />
+                    <input onClick={()=> setRemember(!remember)} type="checkbox" className="h-5 w-5 text-black border border-black rounded-md" />
                     <span className="ml-2 text-black font-semibold">Remember me</span>
                 </div>
                 <p className='text-btn-color underline cursor-pointer'>Forgot Password</p>
             </div>
             <p className='text-red-700 mt-3'>{error}</p>
-            <button className='bg-btn-color w-full py-3 text-xl rounded-md my-5 font-bold'>Login</button>
+            <button disabled={remember} className='bg-btn-color w-full py-3 text-xl rounded-md my-5 font-bold'>Login</button>
             <p className='text-center'>Don't have an account? <Link to='/login/register'><span className='text-btn-color underline'>Create Account</span></Link></p>
             </form>
-            <div className='flex w-10/12 border-2 rounded-3xl mx-auto p-2 my-5 justify-between items-center hover:bg-gray-200 cursor-pointer'>
-                <img className='h-8 w-8' src={fblogo} alt="" />
+            <div onClick={facebookSignIn} className='flex w-10/12 border-2 rounded-3xl mx-auto p-2 my-5 justify-between items-center hover:bg-gray-200 cursor-pointer'>
+                <img className='h-8 w-8' src={fbLogo} alt="" />
                 <p className='font-semibold mx-auto'>Continue with Facebook</p>
             </div>
-            <div className='flex w-10/12 border-2 rounded-3xl mx-auto p-2 my-5 justify-between items-center  hover:bg-gray-200 cursor-pointer'>
+            <div onClick={googleSignIn} className='flex w-10/12 border-2 rounded-3xl mx-auto p-2 my-5 justify-between items-center  hover:bg-gray-200 cursor-pointer'>
                 <img className='h-8 w-8' src={googleLogo} alt="" />
                 <p className='font-semibold mx-auto'>Continue with Facebook</p>
             </div>

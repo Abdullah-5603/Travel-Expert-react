@@ -8,7 +8,7 @@ const HotelDetailsTable = ({ rm }) => {
         if (showToast) {
             timer = setTimeout(() => {
                 setShowToast(false);
-            }, 2000);
+            }, 1500);
         }
         return () => {
             clearTimeout(timer);
